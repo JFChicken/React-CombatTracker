@@ -1,0 +1,26 @@
+{
+  "name": "React-CombatTracker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ChibiChickenKami/React-CombatTracker.git",
+  "author": "JFC <chibikami@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "build" : "webpack -p"
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "lodash": "^4.17.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.5.5"
+  }
+}
