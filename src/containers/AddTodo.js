@@ -27,6 +27,7 @@ class AddTodo extends React.Component {
     };
 
     render(){
+        const { addTodo } = this.props;
     return (
         <div>
 
@@ -52,4 +53,20 @@ class AddTodo extends React.Component {
     }
 }
 
-export default connect()(AddTodo);
+const mapStateToProps = state => {
+    return {
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addTodo: id => {
+            dispatch(addTodo(id))
+        }
+    }
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AddTodo);

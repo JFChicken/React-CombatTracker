@@ -6,7 +6,7 @@ import todoApp from './reducers'
 import App from './components/App'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-let store = createStore(todoApp)
+let store = createStore(todoApp);
 
 render(
     <MuiThemeProvider>
@@ -15,4 +15,4 @@ render(
     </Provider>
     </MuiThemeProvider>,
     document.getElementById('app')
-)
+);
