@@ -42,7 +42,9 @@ class AddTodo extends React.Component {
                             return
                         }
                         addTodo(this.state.textFieldValue);
-
+                        this.setState({
+                            textFieldValue: ''
+                        });
                     }
 
                 } />
