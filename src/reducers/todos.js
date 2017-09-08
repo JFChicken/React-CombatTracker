@@ -1,4 +1,8 @@
-const todos = (state = [], action) => {
+// @flow
+
+const initialState:Array<Object>= [];
+
+const todos = (state:Array<Object> = initialState, action:Object) => {
     switch (action.type) {
         case 'ADD_TODO':
             return [

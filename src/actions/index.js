@@ -1,5 +1,6 @@
+// @flow
 let nextTodoId = 0;
-export const addTodo = text => {
+export const addTodo = (text: String) => {
     return {
         type: 'ADD_TODO',
         id: nextTodoId++,
@@ -7,14 +8,14 @@ export const addTodo = text => {
     }
 };
 
-export const setVisibilityFilter = filter => {
+export const setVisibilityFilter = (filter: String)  => {
     return {
         type: 'SET_VISIBILITY_FILTER',
         filter
     }
 };
 
-export const toggleTodo = id => {
+export const toggleTodo = (id: Number) => {
     return {
         type: 'TOGGLE_TODO',
         id

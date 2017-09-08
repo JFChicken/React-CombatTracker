@@ -1,4 +1,7 @@
-const visibilityFilter = (state = 'SHOW_ALL', action) => {
+// @flow
+const initialState:string = 'SHOW_ALL';
+
+const visibilityFilter = (state:string = initialState, action:Object) => {
     switch (action.type) {
         case 'SET_VISIBILITY_FILTER':
             return action.filter
