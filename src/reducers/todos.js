@@ -8,20 +8,20 @@ const todos = (state:Array<Object> = initialState, action:Object) => {
             return [
                 ...state,
                 {
-                    id: action.id,
-                    text: action.text,
+                    id: action.payload.id,
+                    text: action.payload.text,
                     completed: false
                 }
-            ]
+            ];
         case 'TOGGLE_TODO':
             return state.map(todo =>
-                (todo.id === action.id)
+                (todo.id === action.payload.id)
                     ? {...todo, completed: !todo.completed}
                     : todo
-            )
+            );
         default:
             return state
     }
-}
+};
 
 export default todos

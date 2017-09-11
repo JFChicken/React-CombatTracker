@@ -37,7 +37,6 @@ class AddTodo extends React.Component {
 
                 <RaisedButton label="Add Todo" primary={true} style={style} onClick={
                     ()=>{
-                        console.log("this.state.textFieldValue",this.state.textFieldValue);
                         if (!this.state.textFieldValue.trim()) {
                             return
                         }

@@ -1,23 +1,20 @@
 // @flow
 let nextTodoId = 0;
-export const addTodo = (text: String) => {
-    return {
+
+export const addTodo = (text: String):Action => ({
         type: 'ADD_TODO',
-        id: nextTodoId++,
-        text
-    }
-};
+        payload: {text, id:nextTodoId++ },
+});
 
-export const setVisibilityFilter = (filter: String)  => {
-    return {
+export const setVisibilityFilter = (filter: String):Action  => ({
         type: 'SET_VISIBILITY_FILTER',
-        filter
-    }
-};
+        payload: {filter},
+});
 
-export const toggleTodo = (id: Number) => {
-    return {
+export const toggleTodo = (id: Number):Action => ({
         type: 'TOGGLE_TODO',
-        id
-    }
-};
+        payload: {id},
+});
+
+export type Action =
+     { type: string };
