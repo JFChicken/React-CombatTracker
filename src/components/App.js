@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper';
 import Footer from './Footer'
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
-
+import CombatCharacter from '../components/CombatCharacter'
 const style = {
     margin: 20,
     textAlign: 'center',
@@ -18,6 +18,7 @@ const App = () => (
 <div>
     <AddTodo />
     <VisibleTodoList />
+    <CombatCharacter/>
     <Footer />
 </div>
 

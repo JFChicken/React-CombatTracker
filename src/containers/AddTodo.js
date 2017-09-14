@@ -11,7 +11,7 @@ const style = {
 };
 
 
-// const AddTodo = ({ dispatch }) => {
+// const CombatCharacter = ({ dispatch }) => {
 class AddTodo extends React.Component {
 
     constructor(props) {
