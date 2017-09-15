@@ -45,24 +45,26 @@ class CombatCharacter extends React.Component {
 
     render(){
         const { addTodo } = this.props;
+        const {textFieldValue,initiativeValue,maxActionsValue} = this.state;
         return (
             <div>
 
-                <TextField name="characterName" value={this.state.textFieldValue} onChange={
+                <TextField name="characterName" value={textFieldValue} onChange={
                     event => this.handleTextFieldChange(event.target.value)
                 } />
-                <DropDownMenu maxHeight={300} value={this.state.initiativeValue} onChange={this.handleInitiativeValueChange}>
+                <DropDownMenu maxHeight={300} value={initiativeValue} onChange={this.handleInitiativeValueChange}>
                     {items}
                 </DropDownMenu>
-                <DropDownMenu maxHeight={300} value={this.state.maxActionsValue} onChange={this.handleMaxActionsValueValueChange}>
+                <DropDownMenu maxHeight={300} value={maxActionsValue} onChange={this.handleMaxActionsValueValueChange}>
                     {characterActions}
                 </DropDownMenu>
                 <RaisedButton label="Add Character" primary={true} style={style} onClick={
                     ()=>{
-                        if (!this.state.textFieldValue.trim()) {
+                        if (!textFieldValue.trim()) {
                             return
                         }
-                        addTodo(this.state.textFieldValue);
+                        // addTodo(this.state.textFieldValue);
+                        console.log('textFieldValue,initiativeValue,maxActionsValue',textFieldValue,initiativeValue,maxActionsValue);
                         this.setState({
                             textFieldValue: '',
                             initiativeValue:10,
