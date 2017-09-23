@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 // import shortId from 'shortid'; // this may be needed latter when i need to add in keys
 
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { addCharacter } from '../actions'
 
 const style = {
     margin: 12,
@@ -44,7 +44,7 @@ class CombatCharacter extends React.Component {
     };
 
     render(){
-        const { addTodo } = this.props;
+        const { addCharacter } = this.props;
         const {textFieldValue,initiativeValue,maxActionsValue} = this.state;
         return (
             <div>
@@ -63,7 +63,7 @@ class CombatCharacter extends React.Component {
                         if (!textFieldValue.trim()) {
                             return
                         }
-                        // addTodo(this.state.textFieldValue);
+                         addCharacter(textFieldValue,initiativeValue,maxActionsValue);
                         console.log('textFieldValue,initiativeValue,maxActionsValue',textFieldValue,initiativeValue,maxActionsValue);
                         this.setState({
                             textFieldValue: '',
@@ -87,8 +87,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        characterList: id => {
-            dispatch(addTodo(id))
+        characterList: (textFieldValue,initiativeValue,maxActionsValue) => {
+            dispatch(addCharacter(textFieldValue,initiativeValue,maxActionsValue))
         }
     }
 };

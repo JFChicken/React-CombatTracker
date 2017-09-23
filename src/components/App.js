@@ -6,6 +6,8 @@ import Footer from './Footer'
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import CombatCharacter from '../components/CombatCharacter'
+import CharacterList from './CharacterList'
+
 const style = {
     margin: 20,
     textAlign: 'center',
@@ -19,6 +21,7 @@ const App = () => (
     <AddTodo />
     <VisibleTodoList />
     <CombatCharacter/>
+    <CharacterList/>
     <Footer />
 </div>
 

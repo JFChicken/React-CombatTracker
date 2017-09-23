@@ -2,7 +2,12 @@
 import React from 'react'
 import Character from './Character'
 
-const CharacterList = ({ characters, onTodoClick }) => (
+type CharacterListProps = {
+    characters: Object,
+    onTodoClick: Function,
+
+}
+const CharacterList = ({ characters, onTodoClick }):CharacterListProps => (
     <ul>
         {characters.map(character => (
             <Character key={character.id} {...character} onClick={() => onTodoClick(character.id)} />
@@ -11,4 +16,4 @@ const CharacterList = ({ characters, onTodoClick }) => (
 )
 
 
-export default TodoList
+export default CharacterList
