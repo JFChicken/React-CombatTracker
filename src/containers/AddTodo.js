@@ -58,7 +58,7 @@ class AddTodo extends React.Component {
                                 textFieldValue: ''
                             });
                         } else {
-                            console.log("Some of fields with group as myGroup1 are invalid");
+                            console.log("Some of fields with group as \"myGroup1\" are invalid");
                             console.log("Field which are invalid are ", checkFieldTestResult.inValidComponents);
                             console.log("Fields which are valid are ", checkFieldTestResult.validComponents);
                         }
