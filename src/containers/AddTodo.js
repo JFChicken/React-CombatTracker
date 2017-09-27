@@ -1,10 +1,10 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-// import shortId from 'shortid'; // this may be needed latter when i need to add in keys
-
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
+import { Validation, fieldValidatorCore } from "react-validation-framework";
+import validator from "validator";
 
 const style = {
     margin: 12,
@@ -30,25 +30,41 @@ class AddTodo extends React.Component {
         const { addTodo } = this.props;
     return (
         <div>
-
-            <TextField name="todo" value={this.state.textFieldValue} onChange={
+            <Validation
+                group="myGroup1"
+                validators={[
+                    {
+                        validator: (val) => !validator.isEmpty(val),
+                        errorMessage: "Cannot be left empty"
+                    }, {
+                        validator: (val) => validator.isAlphanumeric(val),
+                        errorMessage: "Should be a numeric number"
+                    },
+                ]}>
+            <TextField
+                name="todo"
+                value={this.state.textFieldValue}
+                onChange={
                 event => this.handleTextFieldChange(event.target.value)
             } />
-
+            </Validation>
                 <RaisedButton label="Add Todo" primary={true} style={style} onClick={
                     ()=>{
-                        if (!this.state.textFieldValue.trim()) {
-                            return
+                        let checkFieldTestResult = fieldValidatorCore.checkGroup("myGroup1");
+                        if (checkFieldTestResult.isValid){
+                            console.log("All fields with Gropu prop value as myGroup1 is valid");
+                            addTodo(this.state.textFieldValue.trim());
+                            this.setState({
+                                textFieldValue: ''
+                            });
+                        } else {
+                            console.log("Some of fields with group as myGroup1 are invalid");
+                            console.log("Field which are invalid are ", checkFieldTestResult.inValidComponents);
+                            console.log("Fields which are valid are ", checkFieldTestResult.validComponents);
                         }
-                        addTodo(this.state.textFieldValue);
-                        this.setState({
-                            textFieldValue: ''
-                        });
                     }
 
                 } />
-
-
         </div>
     );
     }
