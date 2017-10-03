@@ -1,4 +1,5 @@
 // @flow
+import { connect } from 'react-redux'
 import React from 'react'
 import Character from './Character'
 
@@ -14,6 +15,23 @@ const CharacterList = ({ characters, onTodoClick }):CharacterListProps => (
         ))}
     </ul>
 )
+const mapStateToProps = state => {
+    return {
+        todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    }
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+        onTodoClick: id => {
+            dispatch(toggleTodo(id))
+        }
+    }
+}
 
-export default CharacterList
+const VisibleCharacterList = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CharacterList);
+
+export default VisibleCharacterList

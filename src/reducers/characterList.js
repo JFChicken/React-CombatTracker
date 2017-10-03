@@ -1,10 +1,9 @@
 // @flow
 
-const initialState:Array<Object>= [];
+const initialState:Array<Object>= [
+];
 
 const characterList = (state:Array<Object> = initialState, action:Object) => {
-    console.log('state',state);
-    console.log('action',action);
     switch (action.type) {
         case 'ADD_CHARACTER':
             return [
