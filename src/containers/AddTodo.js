@@ -1,10 +1,9 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-// import shortId from 'shortid'; // this may be needed latter when i need to add in keys
-
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
+import validator from "validator";
 
 const style = {
     margin: 12,
@@ -30,11 +29,12 @@ class AddTodo extends React.Component {
         const { addTodo } = this.props;
     return (
         <div>
-
-            <TextField name="todo" value={this.state.textFieldValue} onChange={
+            <TextField
+                name="todo"
+                value={this.state.textFieldValue}
+                onChange={
                 event => this.handleTextFieldChange(event.target.value)
             } />
-
                 <RaisedButton label="Add Todo" primary={true} style={style} onClick={
                     ()=>{
                         if (!this.state.textFieldValue.trim()) {
@@ -47,8 +47,6 @@ class AddTodo extends React.Component {
                     }
 
                 } />
-
-
         </div>
     );
     }

@@ -1,5 +1,8 @@
 [ignore]
 ;.*/node_modules
+;.*/node_modules/flow-coverage-report/src/lib/report-html.js
+;.*/node_modules/flow-coverage-report/src/lib/index.js
+.*/node_modules/flow-coverage-report/src/lib
 [include]
 
 [libs]

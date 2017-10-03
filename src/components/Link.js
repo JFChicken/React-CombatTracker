@@ -1,7 +1,12 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const Link = ({ active, children, onClick }) => {
+type LinkProps={
+    active:Boolean,
+    children: Object,
+        onClick: Function,
+}
+const Link = ({ active, children, onClick }:LinkProps) => {
     if (active) {
         return <span>{children}</span>
     }
@@ -9,8 +14,8 @@ const Link = ({ active, children, onClick }) => {
     return (
         <a
             href="#"
-            onClick={e => {
-                e.preventDefault()
+            onClick={(e:Object) => {
+                e.preventDefault();
                 onClick()
             }}
         >
@@ -19,10 +24,5 @@ const Link = ({ active, children, onClick }) => {
     )
 }
 
-Link.propTypes = {
-    active: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired,
-    onClick: PropTypes.func.isRequired
-}
 
 export default Link
