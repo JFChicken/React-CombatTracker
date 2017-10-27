@@ -10,17 +10,23 @@ const style = {
     margin: 12,
 };
 
+type props={
+
+}
 type state ={
     textFieldValue: string,
 }
 
-// const AddTodo = ({ dispatch }) => {
 class AddTodo extends React.Component {
 
-    
+state: {
+    textFieldValue:string,
+};
     constructor(props) {
         super(props);
-        this.state = {textFieldValue: ''};
+        this.state = {
+            textFieldValue: ''
+        };
     }
 
 
