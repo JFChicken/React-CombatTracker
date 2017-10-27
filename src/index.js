@@ -1,19 +1,28 @@
 // @flow
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import App from './components/App'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import React from 'react';
+import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import configureStore, { history } from './store/configureStore';
+import Root from './components/Root';
 
-let store = createStore(todoApp);
+
+const store = configureStore();
 
 render(
-    <MuiThemeProvider>
-    <Provider store={store}>
-        <App />
-    </Provider>
-    </MuiThemeProvider>,
+    <AppContainer>
+        <Root store={store} history={history} />
+    </AppContainer>,
     document.getElementById('app')
 );
+
+if (module.hot) {
+    module.hot.accept('./components/Root', () => {
+        const NewRoot = require('./components/Root').default;
+        render(
+            <AppContainer>
+                <NewRoot store={store} history={history} />
+            </AppContainer>,
+            document.getElementById('app')
+        );
+    });
+}

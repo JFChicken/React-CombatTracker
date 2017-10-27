@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -9,10 +10,14 @@ const style = {
     margin: 12,
 };
 
+type state ={
+    textFieldValue: string,
+}
 
 // const AddTodo = ({ dispatch }) => {
 class AddTodo extends React.Component {
 
+    
     constructor(props) {
         super(props);
         this.state = {textFieldValue: ''};
