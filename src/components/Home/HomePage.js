@@ -11,12 +11,12 @@ const style = {
 
 const HomePage = () => (
     <div>
-        <Paper style={style} zDepth={1} children={
-            <div>
-                Combat Tracker
-            </div>
 
-        }/>
+            <h1>
+                Combat Tracker
+            </h1>
+
+
 
     </div>
 );
