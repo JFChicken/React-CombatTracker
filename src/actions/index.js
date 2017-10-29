@@ -16,5 +16,12 @@ export const toggleTodo = (id: Number):Action => ({
         payload: {id},
 });
 
+let nextCharacterId = 0;
+
+export const addCharacter = (name: String,initiate: Number):Action => ({
+    type: 'ADD_CHARACTER',
+    payload: {name,initiate, id:nextCharacterId++ },
+});
+
 export type Action =
      { type: string };
