@@ -3,14 +3,16 @@ import type {Action, TodosState} from '../types';
 
 export const initialState = [];
 
+
 const todos = (state: TodosState = initialState, action: Action): TodosState => {
   switch (action.type) {
     case 'ADD_TODO':
+        const { todo } = action.payload;
       return [
         ...state,
         {
-          id: action.payload.id,
-          text: action.payload.text,
+          id: todo.id,
+          text: todo.text,
           completed: false
         }
       ];

@@ -6,7 +6,7 @@ import configureStore, { history } from './store/configureStore';
 import Root from './components/Root';
 
 
-const store = configureStore();
+const store = configureStore({});
 
 render(
     <AppContainer>
