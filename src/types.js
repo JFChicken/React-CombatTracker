@@ -13,7 +13,9 @@ export type AppState = {
 
 };
 
-
+export type CombatRoundsState = {
+  currentCombatRound: number,
+};
 
 // State
 
