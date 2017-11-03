@@ -1,8 +1,9 @@
 // @flow
 import React from 'react'
+import { compose } from 'ramda';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 import validator from "validator";
 
@@ -63,20 +64,10 @@ state: {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-    }
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addTodo: id => {
-            dispatch(addTodo(id))
-        }
-    }
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+export default compose(
+    connect(
+        (state: State) => ({
+        }),
+        { addTodo },
+    ),
 )(AddTodo);

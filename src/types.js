@@ -12,7 +12,12 @@ export type Todo = {|
 // We can't use Strict<T> = T & $Shape<T>, because it breaks autocomplete.
 // TODO: Wait for Flow.
 
-export type AppState = {};
+export type AppState = {
+  combat:{
+    round:number,
+    currentInt:number,
+  }
+};
 
 
 export type TodosState = {

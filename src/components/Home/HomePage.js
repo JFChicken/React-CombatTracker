@@ -1,24 +1,42 @@
 // @flow
 import React from 'react'
-import Paper from 'material-ui/Paper';
+import {compose} from 'ramda';
+import {connect} from 'react-redux';
 
 const style = {
-    margin: 20,
-    textAlign: 'center',
-    display: 'flow',
-    minHeight:200,
+  margin: 20,
+  textAlign: 'center',
+  display: 'flow',
+  minHeight: 200,
 };
+type HomePageProps = {
+  appState: object,
+}
 
-const HomePage = () => (
-    <div>
+class HomePage extends React.Component {
+  props: HomePageProps;
 
-            <h1>
-                Combat Tracker
-            </h1>
+  render() {
+    const {appState} = this.props;
+    console.log('appState',appState);
+    return (
+        <div>
+
+          <h1>
+            Combat Tracker
+          </h1>
 
 
+        </div>
+    )
+  };
+}
 
-    </div>
-);
-
-export default HomePage
+export default compose(
+    connect(
+        state => ({
+          appState: state.appState,
+        }),
+        {},
+    ),
+)(HomePage);

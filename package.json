@@ -6,7 +6,7 @@
   "author": "JFC <chibikami@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start":"babel-node tools/srcServer.js",
+    "start": "babel-node tools/srcServer.js",
     "dev-html": "webpack -d --watch",
     "open:src": "babel-node tools/srcServer.js",
     "build": "webpack -p",
@@ -19,6 +19,7 @@
     "flow-coverage-report": "^0.3.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.19.1",
+    "ramda": "^0.25.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

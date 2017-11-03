@@ -5,8 +5,9 @@ import { AppContainer } from 'react-hot-loader';
 import configureStore, { history } from './store/configureStore';
 import Root from './components/Root';
 
+const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
 
-const store = configureStore();
+const store = configureStore({initialState});
 
 render(
     <AppContainer>
