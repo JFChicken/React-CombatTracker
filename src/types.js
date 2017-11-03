@@ -1,9 +1,20 @@
 // @flow
+// Core
+
+export type Deps = {
+    getState: () => Object,
+    getUid: () => string,
+    now: () => number,
+    uuid: Object,
+    validate: (json: Object) => any,
+};
 // Models
 
 export type Todo = {|
-  id: string,
-  title: string,
+    completed: boolean,
+    createdAt: number,
+    id: string,
+    title: string,
 |};
 
 
@@ -21,7 +32,7 @@ export type AppState = {
 
 
 export type TodosState = {
-  all: { [id: string]: Todo },
+    all: { [id: string]: Todo },
 };
 
 // State

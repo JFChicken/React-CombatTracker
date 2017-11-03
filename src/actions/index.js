@@ -1,13 +1,18 @@
 // @flow
-import type {Action} from '../types';
+import type {Action,Deps, Todo} from '../types';
 
-
-let nextTodoId = 0;
-
-export const addTodo = (text: String): Action => ({
-  type: 'ADD_TODO',
-  payload: {text, id: nextTodoId++},
-});
+export const addTodo = (title: string) =>
+    ({ getUid, now }: Deps): Action => ({
+        type: 'ADD_TODO',
+        payload: {
+            todo: {
+                completed: false,
+                createdAt: now(),
+                id: getUid(),
+                title: title.trim(),
+            },
+        },
+    });
 
 export const setVisibilityFilter = (filter: String): Action => ({
   type: 'SET_VISIBILITY_FILTER',
