@@ -2,8 +2,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import configureStore, { history } from './store/configureStore';
-import Root from './components/Root';
+import configureStore, { history } from './common/configureStore';
+import Root from './browser/Root';
 
 const initialState = window.__INITIAL_STATE__; // eslint-disable-line no-underscore-dangle
 
@@ -17,8 +17,8 @@ render(
 );
 
 if (module.hot) {
-    module.hot.accept('./components/Root', () => {
-        const NewRoot = require('./components/Root').default;
+    module.hot.accept('./browser/Root', () => {
+        const NewRoot = require('./browser/Root').default;
         render(
             <AppContainer>
                 <NewRoot store={store} history={history} />
