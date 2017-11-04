@@ -1,5 +1,9 @@
 // @flow
 import React from 'react';
+import { compose } from 'ramda';
+import { connect } from 'react-redux';
+
+import { clearCombatRounds,nextCombatRound } from '../../common/combatRounds/actions'
 
 // Material UI
 import RaisedButton from 'material-ui/RaisedButton';
@@ -25,22 +29,28 @@ const inlineStyles = {
   }
 };
 
-const Counter = (combatRound:Number) => {
+const Counter = ({combatRound}) => {
 
-  const counter = <span>00</span>;
   return (
-      <Paper style={inlineStyles.counter} zDepth={2} children={counter} />
+      <Paper style={inlineStyles.counter} zDepth={2} children={<div> `${combatRound}` </div>} />
   );
 };
 
 
 class CombatRoundsPage extends React.Component {
   render() {
+    const { combatRound, nextCombatRound } = this.props;
+    const { currentCombatRound } = combatRound;
     return (
     <Paper style={inlineStyles.CombatRoundPage} zDepth={1}  children={
         <div style={inlineStyles.CombatRoundPage}>
-          <Counter combatRound={0}/>
-          <RaisedButton label="Next Round" primary={true} style={inlineStyles.button}/>
+          <Counter combatRound={currentCombatRound}/>
+          <RaisedButton
+              label="Next Round"
+              primary={true}
+              style={inlineStyles.button}
+              onClick={()=>{nextCombatRound()}}
+          />
           <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
               anchorOrigin={{horizontal: 'left', vertical: 'top'}}
@@ -54,5 +64,14 @@ class CombatRoundsPage extends React.Component {
     );
   }
 }
+export default compose(
+    connect(
+        (state) => ({
+          combatRound: state.combatRound,
 
-export default CombatRoundsPage;
+        }),
+        { nextCombatRound,
+          clearCombatRounds,
+        },
+    ),
+)(CombatRoundsPage);

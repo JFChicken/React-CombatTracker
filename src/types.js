@@ -21,9 +21,12 @@ export type CombatRoundsState = {
 
 export type State = {
   app: AppState,
+  combatRound: CombatRoundsState,
+
 };
 
 // Actions
 
 export type Action =
-    | { type: 'CLEAR_APP' };
+    | { type: 'NEXT_ROUND' }
+    | { type: 'CLEAR_ROUNDS' };

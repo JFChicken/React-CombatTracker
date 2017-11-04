@@ -10,10 +10,10 @@ const reducer = (state: CombatRoundsState = initialState, action: Action): Comba
     case 'NEXT_ROUND':
       return {
         ...state,
-        currentFieldIdExpanded: action.payload.fieldId,
+          currentCombatRound: state.currentCombatRound + 1
       };
     case 'CLEAR_ROUNDS':
-      return { ...state, isDialogOpen: !state.isDialogOpen };
+      return { ...state, currentCombatRound: 0 };
     default:
       return state;
   }

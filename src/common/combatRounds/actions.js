@@ -1,11 +1,9 @@
 // @flow
 import type { Action } from '../../types';
 
-export const setFieldIdExpanded = (fieldId: Number): Action => ({
+export const nextCombatRound = () => ({
   type: 'NEXT_ROUND',
-  payload: { fieldId },
 });
-export const toggleDeleteDialog = (fieldId: Number): Action => ({
+export const clearCombatRounds = () => ({
   type: 'CLEAR_ROUNDS',
-  payload: { fieldId },
 });
