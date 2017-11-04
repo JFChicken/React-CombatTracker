@@ -15,6 +15,8 @@ export type AppState = {
 
 export type CombatRoundsState = {
   currentCombatRound: number,
+  currentAction: number,
+  maxAction: number,
 };
 
 // State
@@ -29,4 +31,5 @@ export type State = {
 
 export type Action =
     | { type: 'NEXT_ROUND' }
+    | { type: 'SET_ACTIONS', payload:{ maxActions:number } }
     | { type: 'CLEAR_ROUNDS' };

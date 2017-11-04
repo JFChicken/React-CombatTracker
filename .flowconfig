@@ -3,6 +3,7 @@
 ;.*/node_modules/flow-coverage-report/src/lib/report-html.js
 ;.*/node_modules/flow-coverage-report/src/lib/index.js
 .*/node_modules/flow-coverage-report/src/lib
+.*/src/common/configureStore.js
 [include]
 
 [libs]
