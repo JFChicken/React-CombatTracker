@@ -44,7 +44,7 @@ const combatRoundsReducer = (state: CombatRoundsState = initialState, action: Ac
       // if we did something wonky we will just keep what we have
       return state;
     case 'CLEAR_ROUNDS':
-      return {...state, currentCombatRound: 1};
+      return {...state, currentCombatRound: 1,currentAction: 1,};
     default:
       return state;
   }
