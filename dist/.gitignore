@@ -1,1 +1,5 @@
 bundle.js
+
+favicon.ico
+# removes any build js and map files
+*.js*
