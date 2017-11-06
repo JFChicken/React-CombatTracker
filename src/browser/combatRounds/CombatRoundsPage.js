@@ -55,6 +55,23 @@ const Counter = ({counter,title}:CounterProps) => {
 
 
 class CombatRoundsPage extends React.Component {
+
+  saveSession = ()=>{
+    const { combatRound } = this.props;
+    // const { currentCombatRound, currentAction, maxAction } = combatRound;
+    // setter
+    localStorage.setItem('combatRound', JSON.stringify(combatRound));
+
+
+};
+
+  getSession = ()=>{
+    // getter
+    const newstuff = localStorage.getItem('combatRound');
+    console.log('newstuff',newstuff);
+
+};
+
   render() {
     const { combatRound, nextCombatRound,clearCombatRounds,setActions,nextAction } = this.props;
     const { currentCombatRound, currentAction, maxAction } = combatRound;
@@ -88,6 +105,17 @@ class CombatRoundsPage extends React.Component {
                 ]}
             />
           <Divider/>
+            <MenuItem
+                primaryText="Save Combat"
+                onClick={()=>{this.saveSession()}}
+            />
+            <MenuItem
+                primaryText="Get Combat"
+                onClick={()=>{this.getSession()}}
+            />
+
+            <Divider/>
+
             <MenuItem
                 primaryText="Next Round"
                 onClick={()=>{nextCombatRound()}}
