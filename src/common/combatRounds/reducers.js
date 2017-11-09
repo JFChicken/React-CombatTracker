@@ -17,7 +17,8 @@ const combatRoundsReducer = (state: CombatRoundsState = initialState, action: Ac
     case 'NEXT_ROUND':
       return {
         ...state,
-        currentCombatRound: state.currentCombatRound + 1
+        currentCombatRound: state.currentCombatRound + 1,
+        currentAction: 1,
       };
     case 'NEXT_ACTION':
 

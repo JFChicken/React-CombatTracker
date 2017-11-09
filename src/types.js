@@ -2,19 +2,26 @@
 // Core
 
 // Models
-type Charistics = {
-  name:String,
-      HitPoints:number,
-      ResistanceCapacity:number,
+type ActorSettngs = {
+  ActorType: String,
+}
+type Characteristics = {
+  name: String,
+  HitPoints: number,
+  ResistanceCapacity: number,
 };
 
 type Combat = {
-  maxActions:number,
-      currentActions:number,
-      bonuses:{
-    initiative:number,
-  },
+  maxActions: number,
+  currentActions: number,
+  currentInitiative: number,
 };
+
+type Actor = {
+  actorSettings: ActorSettngs,
+  characteristics: Characteristics,
+  combat: Combat,
+}
 
 
 // Reducers
@@ -22,14 +29,11 @@ type Combat = {
 // We can't use Strict<T> = T & $Shape<T>, because it breaks autocomplete.
 // TODO: Wait for Flow.
 
-export type Player = {
-  charistics:Charistics,
-  combat:Combat,
+export type ActorsState = {
+  all:Array<Actor>
 };
 
-export type AppState = {
-
-};
+export type AppState = {};
 
 export type CombatRoundsState = {
   currentCombatRound: number,
@@ -42,7 +46,7 @@ export type CombatRoundsState = {
 export type State = {
   app: AppState,
   combatRound: CombatRoundsState,
-
+  actors:ActorsState,
 };
 
 // Actions
@@ -50,5 +54,6 @@ export type State = {
 export type Action =
     | { type: 'ADD_NAME' }
     | { type: 'NEXT_ROUND' }
-    | { type: 'SET_ACTIONS', payload:{ maxActions:number } }
+    | { type: 'SET_ACTIONS', payload: { maxActions: number } }
+    | { type: 'ADD_ACTOR', payload: { name: String, maxActions: number, initiative: number, actorType: string } }
     | { type: 'CLEAR_ROUNDS' };
