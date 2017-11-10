@@ -9,6 +9,9 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 
+// redux actions
+import { addActor } from '../../common/actors/actorsActions';
+
 
 const inlineStyles = {
   button: {
@@ -21,9 +24,6 @@ const inlineStyles = {
     padding:'5px 0px',
     margin: '15px 5px',
   },
-};
-const NewActorPageProps = {
-
 };
 type MenuItemGeneratorProps={
   title:string,
@@ -38,6 +38,9 @@ const MenuItemGenerator = (title,min=1,max=21):MenuItemGeneratorProps =>{
   }
 
   return(items);
+};
+type NewActorPageProps = {
+  addActor:Function,
 };
 
 class NewActorPage extends React.Component {
@@ -60,7 +63,7 @@ class NewActorPage extends React.Component {
   handleNameChange = (event, name) =>this.setState({name});
 
   handleNewActorClick = (name,maxActions,initiative,actorType)=>{
-    console.log('name,maxActions,initiative,actorType',name,maxActions,initiative,actorType);
+    this.props.addActor(name,maxActions,initiative,actorType);
   };
 
   render() {
@@ -102,6 +105,7 @@ export default compose(
         }),
         {
           // actions
+          addActor,
         },
     ),
 )(NewActorPage);
