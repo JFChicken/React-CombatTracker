@@ -87,14 +87,14 @@ class CombatRoundsTrackerPage extends React.Component {
           <div style={inlineStyles.combatRoundPage}>
             <Counter counter={currentCombatRound} title="Round"/>
             <Counter counter={currentAction} title="Action"/>
-            <Counter counter={maxAction} title="Max Actions"/>
+            <Counter counter={0} title="Initiative"/>
             <div style={inlineStyles.combatActions}>
               <RaisedButton
-                  label="Next Action"
+                  label="Next Initiative"
                   primary={true}
                   style={inlineStyles.button}
                   onClick={() => {
-                    nextAction()
+
                   }}
               />
               <IconMenu
@@ -136,6 +136,12 @@ class CombatRoundsTrackerPage extends React.Component {
 
                 <Divider/>
 
+                <MenuItem
+                    primaryText="Next Action"
+                    onClick={() => {
+                      nextAction()
+                    }}
+                />
                 <MenuItem
                     primaryText="Next Round"
                     onClick={() => {

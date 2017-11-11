@@ -72,6 +72,7 @@ class NewActorPage extends React.Component {
     return (
         <div style={inlineStyles.page}>
           <TextField
+              id="actorName"
               defaultValue={name}
               onChange={(event, index) => this.handleNameChange(event, index)}
           />

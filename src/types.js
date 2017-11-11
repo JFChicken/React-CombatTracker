@@ -7,8 +7,8 @@ type ActorSettngs = {
 }
 type Characteristics = {
   name: String,
-  HitPoints: number,
-  ResistanceCapacity: number,
+  hitPoints: number,
+  resistanceCapacity: number,
 };
 
 type Combat = {

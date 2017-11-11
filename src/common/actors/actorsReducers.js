@@ -16,12 +16,12 @@ const actorsReducer = (state: ActorsState = initialState, action: Action): Actor
           },
           characteristics: {
             name: action.payload.name,
-            HitPoints: 0,
-            ResistanceCapacity: 0,
+            hitPoints: 0,
+            resistanceCapacity: 0,
           },
           combat: {
-            maxActions: 0,
-            currentActions: 0,
+            maxActions: action.payload.maxActions,
+            currentActions: action.payload.maxActions,
             currentInitiative: action.payload.initiative,
           },
         })
