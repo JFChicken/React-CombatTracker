@@ -1,17 +1,19 @@
 // @flow
-import type {Action, ActorsState} from '../../types';
+import type { Action, ActorsState } from '../../types';
+// Helper functions
+import { orderBy } from 'lodash'
 
 export const initialState = {
-  all:[],
+  all: [],
 };
 
-const actorsReducer = (state: ActorsState = initialState, action: Action): ActorsState => {
+const actorsReducer = ( state: ActorsState = initialState, action: Action ): ActorsState => {
   switch (action.type) {
     case 'ADD_PLAYER':
-
-      return Object.assign({}, state, {
-        all : state.all.concat({
-          actorSettings:{
+      // Create a new state with the new actor
+      let newState = Object.assign({}, state, {
+        all: state.all.concat({
+          actorSettings: {
             ActorType: action.payload.actorType,
           },
           characteristics: {
@@ -26,6 +28,11 @@ const actorsReducer = (state: ActorsState = initialState, action: Action): Actor
           },
         })
       });
+      // return the new state with the actors sorted by initiative
+        newState.all = orderBy(newState.all, ( o ) => {
+          return o.combat.currentInitiative
+        }, [ 'desc' ]);
+      return (newState);
 
     default:
       return state;
