@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { clearCombatRounds, nextCombatRound, setActions } from '../../common/combatRounds/actions'
 
 // Material UI
-import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
+import MenuItem from 'material-ui/MenuItem';
+import Drawer from 'material-ui/Drawer';
 
 const inlineStyles = {
   button: {
@@ -50,7 +51,16 @@ type CombatRoundsTrackerPageProps = {};
 
 class CombatRoundsTrackerPage extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+
   props: CombatRoundsTrackerPageProps;
+
+  handleToggle = () => this.setState({open: !this.state.open});
+
+  handleClose = () => this.setState({open: false});
 
   render() {
     const { combatRound, nextCombatRound, clearCombatRounds, setActions, nextAction } = this.props;
@@ -59,11 +69,23 @@ class CombatRoundsTrackerPage extends React.Component {
     <AppBar
         title={<div style={inlineStyles.combatRoundPage}>
           <Counter counter={currentCombatRound} title="Round"/>
-          <Counter counter={currentAction} title="Action"/>
-
+          <Counter counter={currentAction} title={`Action(${maxAction}) `}/>
+          <Drawer
+              docked={false}
+              width={200}
+              open={this.state.open}
+              onRequestChange={(open) => this.setState({open})}
+          >
+            <MenuItem onClick={()=>{ nextCombatRound();  this.handleClose();  } }>nextCombatRound</MenuItem>
+            <MenuItem onClick={()=>{ clearCombatRounds();this.handleClose();  } }>clearCombatRounds</MenuItem>
+            <MenuItem onClick={()=>{ setActions(4);      this.handleClose();  } }>setActions 4</MenuItem>
+            <MenuItem onClick={()=>{ setActions(5);      this.handleClose();  } }>setActions 5</MenuItem>
+            <MenuItem onClick={()=>{ setActions(6);      this.handleClose();  } }>setActions 6</MenuItem>
+            <MenuItem onClick={()=>{ setActions(7);      this.handleClose();  } }>setActions 7</MenuItem>
+          </Drawer>
         </div>}
         onLeftIconButtonTouchTap={()=>{
-          alert('show bar')
+          this.handleToggle();
         }}
     />
 
