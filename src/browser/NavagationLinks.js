@@ -31,6 +31,8 @@ export const NavagationLinks = () => {
 
         <NavLink exact to="/actors" activeStyle={inlineStyles.activeStyle}> <FlatButton label="Players"/></NavLink>
 
+        <NavLink exact to="/items" activeStyle={inlineStyles.activeStyle}> <FlatButton label="Items"/></NavLink>
+
       </div>
   );
 };
