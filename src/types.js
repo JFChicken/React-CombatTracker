@@ -66,4 +66,5 @@ export type Action =
     | { type: 'SET_ACTIONS', payload: { maxActions: number } }
     | { type: 'ADD_ACTOR', payload: { name: String, maxActions: number, initiative: number, actorType: String } }
     | { type: 'ADD_ITEM', payload: { title: String, amount: number, description: String} }
+    | { type: 'EDIT_ITEM', payload: {id:String, title: String, amount: number, description: String} }
     | { type: 'CLEAR_ROUNDS' };

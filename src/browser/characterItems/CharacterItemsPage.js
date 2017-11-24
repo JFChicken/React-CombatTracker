@@ -17,51 +17,50 @@ import { nextAction } from '../../common/combatRounds/actions'
 import ItemCard from './ItemCard';
 
 
-const inlineStyles = {
-
-};
-
+const inlineStyles = {};
 
 
 type CharacterItemsPageProps = {
-  equipment:Array<Object>,
+  equipment: Array<Object>,
 
 };
 
 class CharacterItemsPage extends React.Component {
 
-  constructor(props) {
+  constructor( props ) {
     super(props);
-    this.state = {open: false};
+    this.state = { open: false };
   }
 
   props: CharacterItemsPageProps;
 
-  handleToggle = () => this.setState({open: !this.state.open});
+  handleToggle = () => this.setState({ open: !this.state.open });
 
-  handleClose = () => this.setState({open: false});
+  handleClose = () => this.setState({ open: false });
 
   render() {
-const { equipment } = this.props;
+    const { equipment, state } = this.props;
     return (
         <div>
-        <AppBar
-            title={<div style={inlineStyles.combatRoundPage}>
-              <span> Items </span>
-              <Drawer
-                  docked={false}
-                  width={200}
-                  open={this.state.open}
-                  onRequestChange={(open) => this.setState({open})}
-              >
-                <MenuItem onClick={()=>{ this.handleClose();  } }>action</MenuItem>
+          <AppBar
+              title={<div style={inlineStyles.combatRoundPage}>
+                <span> Items </span>
+                <Drawer
+                    docked={false}
+                    width={200}
+                    open={this.state.open}
+                    onRequestChange={( open ) => this.setState({ open })}
+                >
+                  <MenuItem onClick={() => {
+                    this.handleClose();
+                  }}>action</MenuItem>
 
-              </Drawer>
-            </div>}
-            onLeftIconButtonTouchTap={()=>{
-              this.handleToggle();
-            }}
-        />
+                </Drawer>
+              </div>}
+              onLeftIconButtonTouchTap={() => {
+                this.handleToggle();
+              }}
+          />
 
           {equipment.map(( object, index ) => {
             return (
@@ -69,19 +68,22 @@ const { equipment } = this.props;
                     key={index}
                     id={object.id}
                     title={object.title}
-                    amount={object.amount }
+                    amount={object.amount}
                     description={object.description}
                 />
-            )})
+            )
+          })
           }
         </div>
     );
   }
 }
+
 export default compose(
     connect(
-        (state) => ({
-         // reducers
+        ( state ) => ({
+          // reducers
+          state: state,
           equipment: state.items.equipment,
         }),
         {

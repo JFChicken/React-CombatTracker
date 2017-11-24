@@ -3466,6 +3466,10 @@ react-event-listener@^0.4.5:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-form-validator-core@^0.1.0, react-form-validator-core@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-form-validator-core/-/react-form-validator-core-0.1.1.tgz#26e1f8981fed8542db0332e1e2ef2cf6e1ba2a88"
+
 react-hot-loader@3.0.0-beta.6:
   version "3.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0-beta.6.tgz#463fac0bfc8b63a8385258af20c91636abce75f4"
@@ -3476,6 +3480,12 @@ react-hot-loader@3.0.0-beta.6:
     react-proxy "^3.0.0-alpha.0"
     redbox-react "^1.2.5"
     source-map "^0.4.4"
+
+react-material-ui-form-validator@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-material-ui-form-validator/-/react-material-ui-form-validator-1.0.1.tgz#e89c52bb016c7a918ef320944e6fe0437264e88f"
+  dependencies:
+    react-form-validator-core "^0.1.0"
 
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"
