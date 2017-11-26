@@ -2,6 +2,9 @@
 import type { Action, CharacterItemsState } from '../../types';
 // Helper functions
 import shortId from 'shortid';
+// storage local functions
+import { setLocalStorage, getLocalStorage } from '../utilities';
+
 
 export const initialState = {
   equipment: [
@@ -22,6 +25,7 @@ export const initialState = {
 
 const characterItemsReducer = ( state: CharacterItemsState = initialState, action: Action ): CharacterItemsState => {
   let newState = {};
+  let currentEquipment = {};
   switch (action.type) {
     case 'ADD_ITEM':
       // Create a new state with the new item
@@ -36,18 +40,30 @@ const characterItemsReducer = ( state: CharacterItemsState = initialState, actio
       return (newState);
 
     case 'EDIT_ITEM':
-
-      const { equipment } = state;
-      newState = equipment.map(item => (item.id === action.payload.id)
-          ? {
-            ...equipment,
-            title: action.payload.title,
-            amount: action.payload.amount,
-            description: action.payload.description
-          } : item
+      currentEquipment = state.equipment;
+      newState = currentEquipment.map(item => {
+            if (item.id === action.payload.id) {
+              item.title = action.payload.title;
+              item.amount = action.payload.amount;
+              item.description = action.payload.description;
+            }
+            return item;
+          }
       );
 
-      return ({...state, equipment:newState});
+      return ({ ...state, equipment: newState });
+
+    case 'STORE_LOCAL':
+      currentEquipment = state.equipment;
+      setLocalStorage('equipment', currentEquipment);
+
+      return (state);
+
+    case 'GET_LOCAL':
+      const localEquipment = getLocalStorage('equipment');
+      newState = Object.assign({}, state,{equipment:localEquipment});
+
+      return (newState);
 
     default:
       return state;

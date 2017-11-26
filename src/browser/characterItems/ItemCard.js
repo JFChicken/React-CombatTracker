@@ -75,7 +75,7 @@ class ItemCard extends React.Component {
   };
 
   componentWillReciveProps( nextProps ) {
-
+console.log('bew st');
   };
 
   handleUpdate = () => {

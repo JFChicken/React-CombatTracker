@@ -9,7 +9,10 @@ import MenuItem from 'material-ui/MenuItem';
 import Drawer from 'material-ui/Drawer';
 
 // Redux Actions
-import { nextAction } from '../../common/combatRounds/actions'
+import { storeLocal, getLocal } from '../../common/characterItems/characterItemsActions';
+
+// local storage functions
+import { removeLocalStorage } from '../../common/utilities';
 
 
 // sub Pages
@@ -22,6 +25,8 @@ const inlineStyles = {};
 
 type CharacterItemsPageProps = {
   equipment: Array<Object>,
+  storeLocal: Function,
+  getLocal: Function,
 
 };
 
@@ -39,7 +44,7 @@ class CharacterItemsPage extends React.Component {
   handleClose = () => this.setState({ open: false });
 
   render() {
-    const { equipment, state } = this.props;
+    const { equipment, getLocal, storeLocal } = this.props;
     return (
         <div>
           <AppBar
@@ -53,7 +58,22 @@ class CharacterItemsPage extends React.Component {
                 >
                   <MenuItem onClick={() => {
                     this.handleClose();
-                  }}>action</MenuItem>
+                  }}>New Item</MenuItem>
+
+                  <MenuItem onClick={() => {
+                    storeLocal();
+                    this.handleClose();
+                  }}>Store to Local</MenuItem>
+
+                  <MenuItem onClick={() => {
+                    getLocal();
+                    this.handleClose();
+                  }}>Load from Local</MenuItem>
+
+                  <MenuItem onClick={() => {
+                    removeLocalStorage('equipment');
+                    this.handleClose();
+                  }}>Clean Local</MenuItem>
 
                 </Drawer>
               </div>}
@@ -88,6 +108,8 @@ export default compose(
         }),
         {
           // actions
+          storeLocal,
+          getLocal,
         },
     ),
 )(CharacterItemsPage);

@@ -11,3 +11,11 @@ export const editItem = (id:String,title: String,amount:number,description:Strin
   type: 'EDIT_ITEM',
   payload:{ id,title,description,amount}
 });
+
+export const storeLocal = ():Action =>({
+  type: 'STORE_LOCAL',
+});
+
+export const getLocal = ():Action =>({
+  type: 'GET_LOCAL',
+});

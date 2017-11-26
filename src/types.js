@@ -63,6 +63,8 @@ export type State = {
 export type Action =
     | { type: 'ADD_NAME' }
     | { type: 'NEXT_ROUND' }
+    | { type: 'STORE_LOCAL' }
+    | { type: 'GET_LOCAL' }
     | { type: 'SET_ACTIONS', payload: { maxActions: number } }
     | { type: 'ADD_ACTOR', payload: { name: String, maxActions: number, initiative: number, actorType: String } }
     | { type: 'ADD_ITEM', payload: { title: String, amount: number, description: String} }
