@@ -8,6 +8,7 @@ import NotFoundPage from './NotFoundPage';
 import { HomePage } from './home/HomePage';
 import CombatRoundsPage from './combatRounds/CombatRoundsPage';
 import ActorsPage from './actors/ActorsPage';
+import ItemsPage from './items/ItemsPage';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -22,6 +23,7 @@ class App extends React.Component {
             <Route exact path="/" component={HomePage}/>
             <Route exact path="/combat" component={CombatRoundsPage}/>
             <Route exact path="/actors" component={ActorsPage}/>
+            <Route exact path="/items" component={ItemsPage}/>
             <Route component={NotFoundPage}/>
           </Switch>
           <NavagationLinks />
