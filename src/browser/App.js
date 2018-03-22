@@ -19,6 +19,7 @@ class App extends React.Component {
   render() {
 
     return (<div>
+          <NavagationLinks />
           <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route exact path="/combat" component={CombatRoundsPage}/>
@@ -26,7 +27,6 @@ class App extends React.Component {
             <Route exact path="/items" component={ItemsPage}/>
             <Route component={NotFoundPage}/>
           </Switch>
-          <NavagationLinks />
         </div>
     );
   };

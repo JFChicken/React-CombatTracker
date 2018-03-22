@@ -11,8 +11,8 @@ import shortId from 'shortid';
 import Paper from 'material-ui/Paper';
 
 // sub Components
-
 import  AddItem  from './AddItem';
+import  ItemList  from './ItemList';
 
 
 const inlineStyles = {
@@ -28,50 +28,6 @@ const inlineStyles = {
 type ItemsPageProps = {
 };
 
-const GET_MOVIES = gql`
-  query {
-    inventory{
-    data{
-      name
-      id
-      description
-      book
-      pageNumber
-    }
-  }
-  }
-`;
-
-
-const PublishedDate = ({ }) => {
-
-  return (
-      <Query query={GET_MOVIES}>
-        {({ loading, error, data }) => {
-          if (loading) return <div>Loading...</div>;
-          if (error) return <div>Error :(</div>;
-          const { inventory } = data;
-
-          const invItems = inventory.data;
-          const items = invItems.map(( a, i ) =>
-              <div key={shortId.generate()}>
-
-                <span>item - {a.name} - Book {a.book} - Page - {a.pageNumber}</span>
-
-              </div>
-          );
-
-          return (
-              <div>
-                {items}
-              </div>
-          )
-        }}
-      </Query>
-  );
-};
-
-
 class ItemsPage extends React.Component {
 
   props: ItemsPageProps;
@@ -82,7 +38,7 @@ class ItemsPage extends React.Component {
         <Paper style={inlineStyles.ItemsPage} zDepth={1} children={
           <div>
             <h1>LIST ITEMS</h1>
-            <PublishedDate />
+            <ItemList />
             <h1>ADD ITEM</h1>
             <AddItem />
           </div>
